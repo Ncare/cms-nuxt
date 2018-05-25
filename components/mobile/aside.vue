@@ -5,7 +5,7 @@
     </div>
     <nav>
       <li v-for="(item, index) in nav" :key="index">
-        <nuxt-link :to="item.path">
+        <nuxt-link :to="item.path" exact>
           <span>
             {{ item.name }}
           </span>
@@ -15,7 +15,9 @@
 
     <div class="mobile-aside-footer">
       <nuxt-link to="/about">关于我</nuxt-link>
+      <span class="seq"></span>
       <nuxt-link to="/archive">归档</nuxt-link>
+      <span class="seq"></span>
       <nuxt-link to="/music">音乐</nuxt-link>
     </div>
   </div>
@@ -63,6 +65,11 @@ export default {
         text-decoration: none;
         color: @disabled;
         display: block;
+        padding: .5rem 0;
+
+        &.nuxt-link-active {
+          color: black;
+        }
       }
     }
   }

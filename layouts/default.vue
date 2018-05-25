@@ -3,15 +3,19 @@
     <div class="app-aside" v-if="mobileLayout" :class="{ open: mobileSidebar }" v-click-outside="hideSide">
       <mobile-side></mobile-side>
     </div>
-    <div class="app-main">
-
+    <div class="app-main" :class="{ open: mobileSidebar }">
+      <transition name="fade">
+        <mobile-head v-if="mobileLayout"></mobile-head>
+      </transition>
+      <nuxt/>
     </div>
-    <nuxt/>
+    
   </div>
 </template>
 
 <script>
 import mobileSide from '~/components/mobile/aside'
+import mobileHead from '~/components/mobile/header'
 
 export default {
   head () {
@@ -24,7 +28,8 @@ export default {
   },
 
   components: {
-    mobileSide
+    mobileSide,
+    mobileHead
   },
 
   computed: {
@@ -58,10 +63,11 @@ export default {
     background-color: white;
     transform: translateX(-100%);
     transition: all .3s ease-in-out;
+    box-shadow: 0 1px 2px rgba(0,0,0,.05);
 
     .mobile-aside {
       opacity: 0;
-      transition: all .3s ease-out;
+      transition: all 0.3s ease-in-out;
     }
 
     &.open {
@@ -70,6 +76,14 @@ export default {
       .mobile-aside {
         opacity: 1;
       }
+    }
+  }
+
+  &-main {
+
+    &.open {
+      transform: translateX(60%);
+      transition: all .3s ease-in-out;
     }
   }
 }

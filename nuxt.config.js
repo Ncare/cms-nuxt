@@ -44,6 +44,15 @@ module.exports = {
       }
     },
 
+    postcss: [
+      require('postcss-nested')(),
+      require('postcss-hexrgba')(),
+      require('postcss-responsive-type')(),
+      require('autoprefixer')({
+        browsers: ['last 3 versions']
+      })
+    ],
+
     styleResources: {
       less: ['./assets/variable.less'],
       options: {}
