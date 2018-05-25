@@ -6,6 +6,7 @@
     <div class="app-main" :class="{ open: mobileSidebar }">
       <transition name="fade">
         <mobile-head v-if="mobileLayout"></mobile-head>
+        <my-header v-else></my-header>
       </transition>
       <nuxt/>
     </div>
@@ -16,6 +17,8 @@
 <script>
 import mobileSide from '~/components/mobile/aside'
 import mobileHead from '~/components/mobile/header'
+
+import myHeader from '~/components/layouts/header'
 
 export default {
   head () {
@@ -29,7 +32,8 @@ export default {
 
   components: {
     mobileSide,
-    mobileHead
+    mobileHead,
+    myHeader
   },
 
   computed: {
