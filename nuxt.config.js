@@ -22,6 +22,10 @@ module.exports = {
   css: [
     { src: '~assets/index.less', lang: 'less' }
   ],
+
+  plugins: [
+    { src: '~/plugins/clickOutside.js', ssr: false }
+  ],
   /*
   ** Build configuration
   */
