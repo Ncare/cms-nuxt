@@ -18,6 +18,10 @@ module.exports = {
   ** Customize the progress bar color
   */
   loading: { color: '#3B8070' },
+
+  css: [
+    { src: '~assets/index.less', lang: 'less' }
+  ],
   /*
   ** Build configuration
   */
@@ -34,6 +38,11 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
+    },
+
+    styleResources: {
+      less: ['./assets/variable.less'],
+      options: {}
     }
   }
 }
