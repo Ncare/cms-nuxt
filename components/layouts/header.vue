@@ -35,7 +35,7 @@ export default {
   data () {
     return {
       nav : [
-        { path: '/', name: '开发' },
+        { path: '/code', name: '开发' },
         { path: '/think', name: '思考' },
         { path: '/travel', name: '旅行' },
       ],
@@ -66,6 +66,7 @@ export default {
   line-height: 3rem;
   padding: 0 2rem;
   box-shadow: 0 1px 2px rgba(0,0,0,.05);
+  background-color: white;
 
   nav {
     margin: 0;

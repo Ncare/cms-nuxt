@@ -8,7 +8,11 @@
         <mobile-head v-if="mobileLayout"></mobile-head>
         <my-header v-else></my-header>
       </transition>
-      <nuxt/>
+      <transition name="fade">
+        <div class="container" :class="{ mobile: mobileLayout }">
+          <nuxt/>
+        </div>
+      </transition>
     </div>
     
   </div>
@@ -89,6 +93,15 @@ export default {
       transform: translateX(60%);
       transition: all .3s ease-in-out;
     }
+
+    .container {
+      width: 38rem;
+      margin: 0 auto;
+
+      &.mobile {
+        width: 100%;
+      }
+    } 
   }
 }
 </style>
