@@ -10,6 +10,16 @@ html {
   margin: 0;
 }
 
+.clearfix {
+  &:after {
+    content: '';
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+}
+
 .seq {
   width: 2px;
   height: 2px;
@@ -29,6 +39,27 @@ body {
 
 body.mobile {
   padding: 0;
+}
+
+
+::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: @disabled;
+}
+
+:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: @disabled;
+}
+
+::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: @disabled;
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: @disabled;
 }
 
 

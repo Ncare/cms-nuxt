@@ -111,7 +111,7 @@ export default {
 
       &.mobile {
         width: 100%;
-        padding: 3rem 1rem 1rem;
+        padding: 4rem 1rem 1rem;
 
       }
     } 
