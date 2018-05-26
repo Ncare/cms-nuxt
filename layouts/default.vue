@@ -14,7 +14,10 @@
         </div>
       </transition>
     </div>
-    
+    <div class="app-footer" v-if="!mobileLayout">
+      <my-footer></my-footer>
+    </div>
+    <sroll-top></sroll-top>
   </div>
 </template>
 
@@ -23,6 +26,8 @@ import mobileSide from '~/components/mobile/aside'
 import mobileHead from '~/components/mobile/header'
 
 import myHeader from '~/components/layouts/header'
+import myFooter from '~/components/layouts/footer'
+import srollTop from '~/components/layouts/scrollTop'
 
 export default {
   head () {
@@ -37,7 +42,9 @@ export default {
   components: {
     mobileSide,
     mobileHead,
-    myHeader
+    myHeader,
+    myFooter,
+    srollTop
   },
 
   computed: {
@@ -62,9 +69,11 @@ export default {
 .app {
 
   &-aside {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
+    right: 0;
+    bottom: 0;
     height: 100%;
     width: 60%;
     z-index: 999;
@@ -89,6 +98,8 @@ export default {
 
   &-main {
 
+    min-height: 100%;
+
     &.open {
       transform: translateX(60%);
       transition: all .3s ease-in-out;
@@ -100,6 +111,8 @@ export default {
 
       &.mobile {
         width: 100%;
+        padding: 3rem 1rem 1rem;
+
       }
     } 
   }

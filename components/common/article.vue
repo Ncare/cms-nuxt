@@ -4,7 +4,7 @@
       <div class="detail">
         <p class="title"><nuxt-link :to="`/article/${item._id}`">{{ item.title }}</nuxt-link></p>
         <nuxt-link :to="`/article/${item._id}`" v-if="mobileLayout">
-          <img :src="item.thumb" width="100%">
+          <img src="https://static.jkchao.cn/TypeScript.png" width="100%">
         </nuxt-link>
         <p class="abstract">{{ item.descript }}</p>
         <div class="meta">
@@ -90,6 +90,7 @@ export default {
 
   .end {
     padding: .5rem 0;
+    margin-top: 1rem;
   }
 
   .loadMore {
