@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <div class="title">
-      <div class="name">关于我</div>
+      <div class="name">Me</div>
       <div class="line"></div>
     </div>
     <div class="info">
@@ -20,6 +20,16 @@
     </div>
     <div class="title">
       <div class="name">More</div>
+      <div class="line"></div>
+    </div>
+    <div class="info">
+      <div class="movie">
+        <p>You know how everyone's saying seize the moment? I don't know, I'm kind of thinking, it's the other way around, you know, like the moment seizes us. </p>
+        <div class="movie-name">少年时代</div>
+      </div>
+    </div>
+    <div class="title">
+      <div class="name">Life</div>
       <div class="line"></div>
     </div>
   </div>
@@ -74,6 +84,28 @@
           padding: 0 .5rem;
           cursor: pointer;
         }
+      }
+    }
+
+    .movie {
+      padding: 1rem 0;
+      width: 80%;
+      margin: 0 auto;
+
+      p {
+        line-height: 1.5rem;
+        text-indent: 2em;
+        color: @lightblack;
+        text-align: left;
+        text-align: justify;
+      }
+
+      .movie-name {
+        text-align: right;
+        color: @lightblack;
+        margin: 1rem;
+        font-size: @font-size-small;
+        font-weight: 700;
       }
     }
   }
