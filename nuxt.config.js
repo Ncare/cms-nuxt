@@ -26,6 +26,10 @@ module.exports = {
   plugins: [
     { src: '~/plugins/clickOutside.js', ssr: false }
   ],
+
+  router: {
+    middleware: ['layout']
+  },
   /*
   ** Build configuration
   */

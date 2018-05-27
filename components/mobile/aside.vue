@@ -28,7 +28,7 @@ export default {
   data () {
     return {
       nav : [
-        { path: '/', name: '开发' },
+        { path: '/code', name: '开发' },
         { path: '/think', name: '思考' },
         { path: '/travel', name: '旅行' },
       ]

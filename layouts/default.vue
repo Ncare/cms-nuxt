@@ -108,6 +108,7 @@ export default {
     .container {
       width: 38rem;
       margin: 0 auto;
+      min-height: calc(100vh - 140px);
 
       &.mobile {
         width: 100%;
