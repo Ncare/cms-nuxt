@@ -12,6 +12,10 @@ import articleView from '~/components/common/article'
 export default {
   name: 'codeView',
 
+  fetch ({store}) {
+    return store.dispatch('getArtList', { type: 1 })
+  },
+
   data () {
     return {
       hasMoreArt: false,
