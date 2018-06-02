@@ -1,12 +1,12 @@
 <template>
   <transition-group tag="div" name="fade" class="article-box" :class="{ 'mobile': mobileLayout }">
-    <div class="article-item" v-for="item in articleList" :key="item._id">
+    <div class="article-item" v-for="item in articleList" :key="item._id" >
       <div class="detail">
         <p class="title"><nuxt-link :to="`/article/${item._id}`">{{ item.title }}</nuxt-link></p>
         <nuxt-link :to="`/article/${item._id}`" v-if="mobileLayout">
           <img src="https://static.jkchao.cn/TypeScript.png" width="100%">
         </nuxt-link>
-        <p class="abstract">{{ item.descript }}</p>
+        <p class="abstract">{{ item.descript | text(200) }}</p>
         <div class="meta">
           <span class="time">
             {{ item.create_at }}
@@ -72,7 +72,7 @@ export default {
       min-height: 3rem;
       color: #586069;
       line-height: 1.5rem;
-      font-size: @font-size-small
+      font-size: @font-size-small;
     }
 
     .meta {

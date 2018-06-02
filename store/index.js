@@ -16,8 +16,20 @@ export const actions = {
 
   async getArtList({ commit, state}, data = { current_page: '1'} ) {
 
+    commit('article/FETCH_ART')
     const res = await ax.getArts(data).catch(err => console.log(err))
 
+    if(res && res.code) {
+      let list
+      if (res.result.pagination.current_page === 1) list = res.result.list
+      else list = [...state.article.art.list, ...res.result.list]
 
+      commit('article/SET_ART_SECCUSS', {
+        list,
+        pagination: res.result.pagination
+      })
+    } else {
+      commit('article/SET_ART_FAILED')
+    }
   }
 }
