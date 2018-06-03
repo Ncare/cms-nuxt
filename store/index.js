@@ -7,8 +7,6 @@ export const actions = {
     const userAgent = process.server ? req.headers['user-agent'] : navigator.userAgent
     const isMobile = /(iPhone|iPod|Opera Mini|Android.*Mobile|NetFront|PSP|BlackBerry|Windows Phone)/ig.test(userAgent)
 
-    console.log(userAgent)
-    console.log(isMobile)
     store.commit('options/SET_USERAGENT', userAgent)
     store.commit('options/SET_MOBILE_LAYOUT', isMobile)
   },
@@ -30,6 +28,27 @@ export const actions = {
       })
     } else {
       commit('article/SET_ART_FAILED')
+    }
+  },
+
+  async getArt({ commit }, data) {
+    
+    const res = await ax.getArt(data).catch(err => console.log(err))
+
+    if (res && res.code) {
+      const details = res.result
+      commit('article/SET_DETAILS', details)
+    }
+  },
+
+  // 归档
+  async getAllarticle({ commit }) {
+    
+    const res = await ax.getAllarts().catch(err => console.log(err))
+
+    if (res && res.code) {
+      const archive = res.result
+      commit('archive/SET_ART_SUCCESS', archive)
     }
   }
 }

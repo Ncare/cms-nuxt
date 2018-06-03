@@ -4,7 +4,7 @@
       <p class="title">{{ article.title }}</p>
       <div class="meta">
         <span class="time">{{ article.create_at }} </span>
-        <span class="num">字数 {{ article.content.length }}</span>
+        <span class="num">字数 {{ article.descript.length }}</span>
         <span class="view">阅读 {{ article.meta.views }}</span>
         <span class="like">喜欢 {{ article.meta.likes }}</span>
         <span class="comments">评论 {{ article.meta.comments }}</span>
@@ -41,19 +41,12 @@ export default {
     myComments
   },
 
+  fetch ({ store, params}) {
+    return store.dispatch('getArt', params)
+  },
+
   data () {
     return {
-      article: {
-        title: '设计模式在 TypeScript 中的应用 - 责任链模式',
-        create_at: '2017.12.20',
-        content: '欢迎使用 Cmd Markdown 编辑阅读器 ------ 我们理解您需要更便捷更高效的工具记录思想，整理笔记、知识，并将其中承载的价值传播给他人，**Cmd Markdown** 是我们给出的答案 —— 我们为记录思想和分享知识提供更专业的工具。 您可以使用 Cmd Markdown：> * 整理知识，学习笔记> * 发布日记，杂文，所见所想',
-        meta: {
-          views: '35',
-          likes: '11',
-          comments: '5'
-        },
-        tags: ['Vue', 'Javascript']
-      }
     }
   },
 
@@ -63,7 +56,11 @@ export default {
     },
 
     articleContent () {
-      return markdown(this.article.content, false, true).html
+      return markdown(this.article.descript, false, true).html
+    },
+
+    article () {
+      return this.$store.state.article.details
     }
   }
 }
@@ -91,6 +88,13 @@ export default {
 
     .article-thumb {
       margin: 1.2rem 0;
+    }
+
+    .content {
+      text-indent: 2em;
+      font-size: 1rem;
+      line-height: 1.5rem;
+      color: #24292e;
     }
   }
 

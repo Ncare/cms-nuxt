@@ -20,11 +20,11 @@
       <div class="time">
         <div v-for="years in archives" :key="years.year">
           <div class="year">{{ years.year }}</div>
-          <div v-for="months in years.months" :key="months.month" class="year-month">
+          <div v-for="months in years.monthList" :key="months.month" class="year-month">
             <div class="month">{{ months.month }}</div>
-            <div v-for="article in months.articles" :key="article.month" class="article">
+            <div v-for="article in months.articleList" :key="article._id" class="article">
                 <div>
-                  <span class="art-date">{{ article.date }}</span>
+                  <span class="art-date">{{ article.create_at }}</span>
                   <span class="art-title"><a href="">{{ article.title }}</a></span>
                 </div>
             </div>
@@ -39,6 +39,10 @@
 export default {
   name: 'archive',
 
+  fetch ({ store }) {
+    return store.dispatch('getAllarticle')
+  },
+
   data () {
     return {
       tags: [
@@ -52,106 +56,14 @@ export default {
         {'name': 'Nuxt', count: 6},
         {'name': '生活', count: 1},
         {'name': 'Music', count: 2},
-      ],
-      archives: [
-        {
-          year: 2018,
-          months: [
-            {
-              month: 'May',
-              articles: [
-                {
-                  title: '数据结构与算法（更新中）',
-                  date: '05.20',
-                },
-                {
-                  title: '开放的世界',
-                  date: '05.13'
-                },
-                {
-                  title: '技术文档的规范',
-                  date: '05.04'
-                }
-              ]
-            },
-            {
-              month: 'April',
-              articles: [
-                {
-                  title: '数据结构与算法（更新中）',
-                  date: '04.21',
-                },
-                {
-                  title: '开放的世界',
-                  date: '04.13'
-                },
-                {
-                  title: '技术文档的规范',
-                  date: '04.03'
-                }
-              ]
-            },
-            
-          ]
-        },
-        {
-          year: 2017,
-          months: [
-            {
-              month: 'May',
-              articles: [
-                {
-                  title: '数据结构与算法（更新中）',
-                  date: '05.20',
-                },
-                {
-                  title: '开放的世界',
-                  date: '05.13'
-                },
-                {
-                  title: '技术文档的规范',
-                  date: '05.04'
-                }
-              ]
-            },
-            {
-              month: 'April',
-              articles: [
-                {
-                  title: '数据结构与算法（更新中）',
-                  date: '04.21',
-                },
-                {
-                  title: '开放的世界',
-                  date: '04.13'
-                },
-                {
-                  title: '技术文档的规范',
-                  date: '04.03'
-                }
-              ]
-            },
-            {
-              month: 'March',
-              articles: [
-                {
-                  title: '数据结构与算法（更新中）',
-                  date: '03.21',
-                },
-                {
-                  title: '开放的世界',
-                  date: '03.13'
-                },
-                {
-                  title: '技术文档的规范',
-                  date: '03.03'
-                }
-              ]
-            },
-            
-          ]
-        }
       ]
+    }
+  },
+
+  computed: {
+
+    archives () {
+      return this.$store.state.archive.art
     }
   }
 }

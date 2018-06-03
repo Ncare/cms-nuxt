@@ -24,5 +24,9 @@ export const mutations = {
   SET_ART_FAILED (state) {
     state.art = { pagination: {}, list: [] }
     state.fetch = false
+  },
+
+  SET_DETAILS (state, data) {
+    state.details = data
   }
 }
